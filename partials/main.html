@@ -1,0 +1,38 @@
+<div class="col-sm-6">
+  <div class="row">
+    <form>
+      <div class="form-group">
+        <button class="btn btn-default" ng-click="add()">Add</button>
+      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th class="col-sm-2">Game</th>
+          <th class="col-sm-2"><input class="form-control" ng-model="players[0]"></th>
+          <th class="col-sm-2"><input class="form-control" ng-model="players[1]"></th>
+          <th class="col-sm-2"><input class="form-control" ng-model="players[2]"></th>
+          <th class="col-sm-2"><input class="form-control" ng-model="players[3]"></th>
+          <th class="col-sm-2">Error</th>
+        </tr>
+        <tr ng-repeat="game in data">
+          <td>{{$index + 1}}</td>
+          <td><input class="form-control" type="number" ng-model="game[players[0]]"></td>
+          <td><input class="form-control" type="number" ng-model="game[players[1]]"></td>
+          <td><input class="form-control" type="number" ng-model="game[players[2]]"></td>
+          <td><input class="form-control" type="number" ng-model="game[players[3]]"></td>
+          <td>{{game|sumGame:players}}</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>{{data|sumTotal:players[0]}}</td>
+          <td>{{data|sumTotal:players[1]}}</td>
+          <td>{{data|sumTotal:players[2]}}</td>
+          <td>{{data|sumTotal:players[3]}}</td>
+          <td></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<div class="col-sm-6">
+  <chart keys="players" values="data"></chart>
+</div>
